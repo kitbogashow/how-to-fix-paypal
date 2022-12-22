@@ -53,3 +53,10 @@ s,t);}
 
 There are currently (12/22/22) 12 sample invoices in text form in `invoices.txt`.
 If you have some code that could solve this task, please let me know and I will try to keep this up to date. 
+
+
+### Installation and Usage
+
+Ensure you have Python 3.8 or higher.
+Then install [Poetry](https://python-poetry.org/) and run `poetry install`.
+You can then use, for example, `poetry run python python/score_text.py` to run the "score text" case.

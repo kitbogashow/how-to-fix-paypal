@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "how-to-fix-paypal"
+version = "0.1.0"
+description = "Various ways to filter text emails to stop scammers from exploiting PayPal's invoice system."
+authors = ["kitboga"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "how_to_fix_paypal"}]
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+transformers = "^4.25.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
