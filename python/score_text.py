@@ -20,6 +20,9 @@ sus_words = {
     'Norton': 1,
     'McAfee': 1,
     'Antivirus': 1,
+    'Microsoft': 1,
+    'department': 1,
+    'support': 1,
 }
 
 for index, line in enumerate(lines):
