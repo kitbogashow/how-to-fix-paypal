@@ -1,6 +1,5 @@
 # Twitch name: Advistane
 
-import os.path
 import re
 
 # Source: https://www.paypal.com/us/smarthelp/contact-us
@@ -9,6 +8,7 @@ official_paypal_numbers = [
     "4029352050",
     "8889148072"
 ]
+
 
 # Doesn't need to scan whole text to find phone numbers,
 # but could potentially break due to different phone number formats
@@ -26,7 +26,7 @@ def check_performant(line_to_check):
     return False
 
 
-# Checks all numbers to see if an official Paypal number is included
+# Checks all numbers to see if an official PayPal number is included
 def check(line_to_check):
     line_stripped = re.sub(r'[^0-9]', '', line_to_check)  # Extract only numbers
     for number in official_paypal_numbers:
@@ -34,7 +34,7 @@ def check(line_to_check):
             return True
 
 
-lines = open(os.path.join(os.getcwd(), '..', 'invoices.txt'), encoding='utf-8')
+lines = open('./invoices.txt', encoding='utf-8')
 
 for index, line in enumerate(lines):  # Iterate through each line
 
