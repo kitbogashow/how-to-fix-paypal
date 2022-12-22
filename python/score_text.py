@@ -14,7 +14,12 @@ sus_words = {
     'authorized': 0.5,
     '24 hours': 0.25,
     'USD': 0.1,
-    'BTC': 0.1
+    'BTC': 0.1,
+    'Geek Squad': 1,
+    'TREND MICRO': 1,
+    'Norton': 1,
+    'McAfee': 1,
+    'Antivirus': 1,
 }
 
 for index, line in enumerate(lines):
