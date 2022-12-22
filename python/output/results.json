@@ -1,0 +1,50 @@
+{
+    "Thank You for Choosing PayPal,...": {
+        "score": 2.75,
+        "flagged": true
+    },
+    "We have found some suspicious ...": {
+        "score": 3.0,
+        "flagged": true
+    },
+    "Dear Customer, You sent a paym...": {
+        "score": 2.85,
+        "flagged": true
+    },
+    "Payment to TREND MICRO\u00ae LLC wa...": {
+        "score": 0.6,
+        "flagged": false
+    },
+    "We found suspicious activity o...": {
+        "score": 3.25,
+        "flagged": true
+    },
+    "Dear Customer You sent a payme...": {
+        "score": 2.6,
+        "flagged": true
+    },
+    "You have successfully made a t...": {
+        "score": 1.6,
+        "flagged": false
+    },
+    "Transactions from your PayPal ...": {
+        "score": 1.35,
+        "flagged": false
+    },
+    "We've detected that your PayPa...": {
+        "score": 2.35,
+        "flagged": false
+    },
+    "According to the information, ...": {
+        "score": 1.25,
+        "flagged": false
+    },
+    "Dear Customer, Your Payment of...": {
+        "score": 0.35,
+        "flagged": false
+    },
+    "Your Payment of $399. 99 to TR...": {
+        "score": 0.5,
+        "flagged": false
+    }
+}
