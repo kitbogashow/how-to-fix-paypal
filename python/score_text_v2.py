@@ -1,5 +1,15 @@
 import re
 
+# Note to Paypal:
+# When an user submits an invoice, before sending the email to the receipent, check what the user has inputed.
+# If the text is flagged as suspicious just add a notice at the top of the email.
+#
+# "Don't reply, open links, download attachments, or call any listed phone numbers.")
+# "PayPal will never ask for your password or financial details by email or message, or over the phone.")
+# "Forward suspicious messages to phishing@paypal.com and then delete them.")
+#
+# You won't loose customers doing this and your customers will be safe.
+
 # Do not include spaces or uppercase characters for easier matching.
 KEYWORDS = { 
     re.compile(r"\+([\d\(\)-]+)"): 2, # This is a phone number regex.
@@ -14,7 +24,8 @@ KEYWORDS = {
     "btc": 0.1
 }
 
-def analyze_text(text: str) -> None:
+# Returns list of matches and the suspicious score.
+def analyze_text(text: str) -> list[str] | float:
     text = re.sub(r'\s+', '', text).lower() # Remove all spaces, tabs, newlines and make the text lower-case for better easier matching.
 
     sus = []
@@ -27,18 +38,17 @@ def analyze_text(text: str) -> None:
             sus.append(match)
             sus_score += score
 
-
-
-    if len(sus) > 0:
-        print(f"Suspicious score: {sus_score}")
-        print(f"Suspicious matches: {', '.join(list(set(sus)))}")
-        return
-    print("No suspicious keywords found.")
+    return sus, sus_score
 
 if __name__ == "__main__":  
     for index, text in enumerate(open('invoices.txt', 'r', encoding='utf-8').readlines()):
         print(f"Analyzing email #{index}:")
-        analyze_text(text)
+        matches, score = analyze_text(text)
+        if score > 0:
+            print(f"Suspicious score: {score}")
+            print(f"Suspicious matches: {', '.join(list(set(matches)))}")
+        else:
+            print("No suspicious keywords found.")
         print()
     
     print("Don't reply, open links, download attachments, or call any listed phone numbers.")
