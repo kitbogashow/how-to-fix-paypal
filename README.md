@@ -12,13 +12,13 @@ An example invoice email looks like this:
 
 ## Table of contents:
 
--   [Helpful links](#helpful-links)
+-   [Context links](#context-links)
 -   [The regular expressions way](#the-regular-expressions-way)
 -   [The "how suspicious is this text" way](#the-how-suspicious-is-this-text-way)
 -   [The obfuscated way](#the-obfuscated-way)
 -   [Want to help?](#want-to-help)
 
-## Helpful links:
+## Context links:
 
 -   [PayPal's information on fake messages](https://www.paypal.com/us/security/learn-about-fake-messages)
 
