@@ -1,5 +1,5 @@
 # open the example text file and read each line
-lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
+lines = open('../invoices.txt', 'r', encoding='utf-8').readlines()
 
 """
 a way to map certain keyword or phrases with a "score" of how "bad" they are
