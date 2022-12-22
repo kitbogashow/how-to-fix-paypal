@@ -11,6 +11,13 @@ For more information regarding these types of scams follow [kitboga](https://you
 
 ## Using Natural Language Processing:
 
+
+## The regular expressions way:
+```regex
+([0-9]{3,}|call|contact|\+1)
+```
+Run test: `$ python3 python/the_regex_way.py`
+
 ### Want to help? 
 
 There are currently (12/22/22) 12 sample invoices in text form in `invoices.txt`.
