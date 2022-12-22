@@ -1,3 +1,4 @@
+const fs = require("fs");
 //written by chatGPT
 //prompt: Write some JavaScript code to identify if the intent of given text is to trick a user into giving money to a bad actor. Some examples of this occurring are:
 //- Thank You for Choosing PayPal, Your Payment of $619.99 will be charged through PAYPAL for BITCOIN CRYPTO. If you did not make this transaction, please contact us at this number +1(445) 555-0005 to cancel and claim a refund. If this is not the case, you will be charged $619.99 today. This transaction will reflect on PayPal activity after 24 hours. Our Service Hours: (6:00 a. m. to 06:00 p. m. Pacific Time).
@@ -102,4 +103,22 @@ function isTrickText3(text) {
         }
     }
     return false;
+}
+
+//read in invoice text
+let texts = fs.readFileSync("../../invoices.txt", { encoding: "utf8" });
+texts = texts.split("\n");
+//for each text, check if it is a trick text and print the the function that identified it as a trick text
+for (let text of texts) {
+    if (!isTrickText(text)) {
+        console.log("T1");
+    }
+    if (!isTrickText2(text)) {
+        console.log("T2");
+    }
+    if (!isTrickText3(text)) {
+        console.log("T3");
+    }
+    console.log("\n");
+    console.log(text);
 }
