@@ -105,6 +105,68 @@ function isTrickText3(text) {
     return false;
 }
 
+//prompt: can you weight the factors so that a threshold must be passed to be identified as trick text
+function isTrickText4(text) {
+    // Set the threshold for determining if a text is a trick text
+    const THRESHOLD = 3;
+
+    // Set the count to 0
+    let count = 0;
+
+    // Check if the text mentions a payment or charge
+    if (
+        text.toLowerCase().includes("payment") ||
+        text.toLowerCase().includes("charge")
+    ) {
+        count++;
+    }
+
+    // Check if the text mentions a refund or cancellation
+    if (
+        text.toLowerCase().includes("refund") ||
+        text.toLowerCase().includes("cancel")
+    ) {
+        count++;
+    }
+
+    // Check if the text includes a phone number for contacting customer service
+    if (text.match(/\+[0-9]{1,4}\s?[0-9]{3}\s?[0-9]{3}\s?[0-9]{3}/)) {
+        count++;
+    }
+
+    // Check if the text mentions a suspicious activity or unauthorized transaction
+    if (
+        text.toLowerCase().includes("suspicious") ||
+        text.toLowerCase().includes("unauthorized")
+    ) {
+        count++;
+    }
+
+    // Check if the text mentions a deadline for cancelling the transaction
+    if (
+        text.toLowerCase().includes("deadline") ||
+        text.toLowerCase().includes("cancellation")
+    ) {
+        count++;
+    }
+
+    // Check if the text includes a support team or help desk
+    if (
+        text.toLowerCase().includes("support team") ||
+        text.toLowerCase().includes("help desk")
+    ) {
+        count++;
+    }
+
+    // If the count is greater than or equal to the threshold, return true
+    if (count >= THRESHOLD) {
+        return true;
+    }
+
+    // Otherwise, return false
+    return false;
+}
+
 //read in invoice text
 let texts = fs.readFileSync("../../invoices.txt", { encoding: "utf8" });
 texts = texts.split("\n");
@@ -119,6 +181,10 @@ for (let text of texts) {
     if (!isTrickText3(text)) {
         console.log("T3");
     }
+    if (!isTrickText4(text)) {
+        console.log("T4");
+    }
+
     console.log("\n");
     console.log(text);
 }
