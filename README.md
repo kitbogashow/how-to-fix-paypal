@@ -6,6 +6,9 @@ These emails come from `service@paypal.com` and therefore look legitimate at fir
 
 For more information regarding these types of scams follow [kitboga](https://youtube.com/kitbogashow) on youtube or twitter.
 
+An example invoice email looks like this:
+![](/assets/email.png)
+
 ## The regular expressions way:
 Credit: @codecat
 ```regex
@@ -35,6 +38,16 @@ for index, line in enumerate(lines):
     # decide what to do if the score is too high 
 ```
 Run test: `$ python python/score_text.py`
+
+## The obfuscated way:
+```c
+char l[512];int c(char f[]){int i=0,m=0,c;while(c=tolower(l[i++])){char
+e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
+;}else m=0;}return 0;}int main(){int s=0,t=0;FILE*fh=fopen("../invoice"
+"s.txt","rb");while(fgets(l,512,fh))++t&&(c("suspicious")||c("unauthor"
+"ized")||c("+1")||c("geek squad")||c(" call"))&&s++;printf("%d / %d\n",
+s,t);}
+```
 
 ### Want to help? 
 
