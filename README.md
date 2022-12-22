@@ -18,7 +18,7 @@ An example invoice email looks like this:
 -   [The obfuscated way](#the-obfuscated-way)
 -   [Want to help?](#want-to-help)
 
-## Helpful links:
+## Links and Context:
 
 -   [PayPal's information on fake messages](https://www.paypal.com/us/security/learn-about-fake-messages)
 
@@ -57,6 +57,7 @@ for index, line in enumerate(lines):
 Run test: `$ python python/score_text.py`
 
 ## The obfuscated way:
+
 ```c
 char l[512];int c(char f[]){int i=0,m=0,c;while(c=tolower(l[i++])){char
 e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
@@ -66,7 +67,7 @@ e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
 s,t);}
 ```
 
-### Want to help? 
+### Want to help?
 
 There are currently (12/22/22) 12 sample invoices in text form in `invoices.txt`.
 If you have some code that could solve this task, please let me know and I will try to keep this up to date.
