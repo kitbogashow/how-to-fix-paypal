@@ -5,6 +5,11 @@ local invoices = io.open('invoices.txt', 'r')
 	meant to be embedded in other systems. It's very unlikely
 	that paypal uses Lua for their backend, but it had to
 	be done for the sake of saying it can be done. PAYAL, FIX IT!
+	
+	This example is not very sophisticated, but it explores
+	use of some string manipulation that would probably be
+	used in a more advanced system with access to a maintained
+	database of common things to look for in a scam invoice.
 --]]
 
 local phone_no_min_length = 8
