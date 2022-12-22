@@ -1,0 +1,10 @@
+suspicious=1
+cancel=1
+illegal=1
+refund=1
+help desk=0.5
+bitcoin=0.5
+authorized=0.5
+24 hours=0.25
+usd=0.1
+btc=0.1
