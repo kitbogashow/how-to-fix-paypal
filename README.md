@@ -32,7 +32,7 @@ sus_words = {
 for index, line in enumerate(lines):
     line_total_score = 0
     for word, score in sus_words.items():
-        if word in line.lower():
+        if word.lower() in line.lower():
             line_total_score += score
     
     # decide what to do if the score is too high 
