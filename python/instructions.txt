@@ -1,7 +1,7 @@
 to use this contribution:
 
 	1. run: pip install -r requirements.txt
-		or if that doesn't work run: pip install python-Levenshtein, fuzzywuzzy
+		or if that doesn't work run: pip install python-Levenshtein fuzzywuzzy
 	
 	2. run python fuzzy_way.py
 	
