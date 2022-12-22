@@ -6,13 +6,8 @@ These emails come from `service@paypal.com` and therefore look legitimate at fir
 
 For more information regarding these types of scams follow [kitboga](https://youtube.com/kitbogashow) on youtube or twitter.
 
-## The simple way:
-
-
-## Using Natural Language Processing:
-
-
 ## The regular expressions way:
+Credit: @codecat
 ```regex
 ([0-9]{3,}|call|contact|\+1)
 ```
