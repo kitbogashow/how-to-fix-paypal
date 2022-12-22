@@ -1,10 +1,11 @@
 import re
+from data import invoice_lines
 
-lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
-matches = 0
+matches = sum(
+    1
+    for line in invoice_lines
+    if re.search(r'([0-9]{3,}|call|contact|\+1)', line)
+)
 
-for line in lines:
-    if re.search('([0-9]{3,}|call|contact|\\+1)', line):
-        matches += 1
-
-print('Matched ' + str(matches) + ' / ' + str(len(lines)))
+if __name__ == '__main__':
+    print(f'Matched {str(matches)} / {str(len(invoice_lines))}')
