@@ -1,6 +1,6 @@
 import re
 
-lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
+lines = open('../invoices.txt', 'r', encoding='utf-8').readlines()
 matches = 0
 
 for line in lines:
