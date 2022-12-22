@@ -13,14 +13,23 @@ An example invoice email looks like this:
 ## Table of contents:
 
 -   [Context links](#context-links)
+-   [The "easy" way](#the-simple-way)
 -   [The regular expressions way](#the-regular-expressions-way)
 -   [The "how suspicious is this text" way](#the-how-suspicious-is-this-text-way)
 -   [The obfuscated way](#the-obfuscated-way)
+-   [The Java Way](#the-java-way)
+-   [The RUSTy way](#the-rusty-way)
 -   [Want to help?](#want-to-help)
 
 ## Context links:
 
 -   [PayPal's information on fake messages](https://www.paypal.com/us/security/learn-about-fake-messages)
+
+
+## The "simple" way:
+Don't allow your users to include phone numbers in the "message" of an invoice. 
+
+But if that somehow causes irreputable harm to your business, explore the other options below:
 
 ## The regular expressions way:
 
@@ -57,6 +66,7 @@ for index, line in enumerate(lines):
 Run test: `$ python python/score_text.py`
 
 ## The obfuscated way:
+Credit: @codecat
 ```c
 char l[512];int c(char f[]){int i=0,m=0,c;while(c=tolower(l[i++])){char
 e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
@@ -65,6 +75,53 @@ e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
 "ized")||c("+1")||c("geek squad")||c(" call"))&&s++;printf("%d / %d\n",
 s,t);}
 ```
+
+## The one line node.js way:
+Credit: @Nomnivore
+```
+import("fs").then((fs) => fs.readFileSync("./invoices.txt").toString().trim().split("\n").forEach((l, n) => l.search(/([0-9]{3,}|call|contact|\\+1)/) >= 0 ? console.log(`line ${n} is likely a scam`) : console.log(`line ${n} is likely not a scam`)))
+```
+
+## The Java Way:
+Credit: @datatags
+```
+private static final Pattern PATTERN = Pattern.compile("[0-9]{3,}|call|contact|\\\\+1");
+public static void main(String[] args) {
+    try (BufferedReader reader = new BufferedReader(new FileReader("invoices.txt"))) {
+        reader.lines().forEach(line -> {
+            if (PATTERN.matcher(line).find()){
+                System.out.println("ඞ sus thing found: " + line);
+            }
+        });
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+## The RUSTy way: 
+Credit: @jasonverbeek
+```
+fn rate_lines() -> Result<()> {
+    let file = File::open("../../invoices.txt")
+        .or_else(|_| ErrorType::IOError.as_error("Could not open invoices.txt"))?;
+    let lines = std::io::BufReader::new(file).lines();
+
+    for (i, line) in lines.enumerate() {
+        let mut score = 0;
+        if let Ok(line_str) = line {
+            for sussy in SUSSY_WUSSY {
+                if line_str.to_lowercase().contains(sussy) {
+                    score += 1;
+                }
+            }
+        }
+        println!("line {} has a sussy wussy score of {}", i, score);
+    }
+    Ok(())
+}
+```
+
 
 ### Want to help? 
 
