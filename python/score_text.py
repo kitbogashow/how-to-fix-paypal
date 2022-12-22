@@ -26,3 +26,6 @@ for index, line in enumerate(lines):
     scores += line_total_score
 
 print("This is the total score: " + str(scores))
+
+if scores > 3:
+    print("AYO WHAT DA H*ll, RED FLAAAAG")
