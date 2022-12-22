@@ -1,17 +1,27 @@
-import os
+# open the example text file and read each line
+lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
 
-from spamassassin_client import SpamAssassin
+"""
+a way to map certain keyword or phrases with a "score" of how "bad" they are
+"""
+sus_words = {
+    'suspicious': 1,
+    'cancel': 1,
+    'illegal': 1,
+    'refund': 1,
+    'help desk': 0.5,
+    'bitcoin': 0.5,
+    'authorized': 0.5,
+    '24 hours': 0.25,
+    'USD': 0.1,
+    'BTC': 0.1
+}
 
-FILES = [dict(type='spam', name='invoices/1.txt'),dict(type='spam', name='invoices/2.txt'),dict(type='spam', name='invoices/3.txt'),dict(type='spam', name='invoices/4.txt'),dict(type='spam', name='invoices/5.txt'),dict(type='spam', name='invoices/6.txt'),dict(type='spam', name='invoices/7.txt'),dict(type='spam', name='invoices/8.txt'),dict(type='spam', name='invoices/9.txt'),dict(type='spam', name='invoices/10.txt'),dict(type='spam', name='invoices/11.txt'),]
+for index, line in enumerate(lines):
+    line_total_score = 0
+    for word, score in sus_words.items():
+        if word in line.lower():
+            line_total_score += score
 
-def main():
-    for test in FILES:
-        filename = test['name']
-        with open(filename,"rb") as f:            
-            print("\nProcessing file: {}".format(filename))
-            assassin = SpamAssassin(f.read())
-            print("Spamassassin score of {0}".format(assassin.get_score()))
-
-if __name__ == "__main__":
-    main()
+    print(f"Line {index+1}: {line_total_score}")
 
