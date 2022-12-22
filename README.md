@@ -13,6 +13,29 @@ Credit: @codecat
 ```
 Run test: `$ python3 python/the_regex_way.py`
 
+
+## The "how suspicious is this text" way:
+```
+# various phrases to match against, and their "weight" of how bad they are.
+sus_words = {
+    'cancel': 1,
+    'refund': 1,
+    'help desk': 0.5,
+    'authorized': 0.5,
+    '24 hours': 0.25,
+    'USD': 0.1
+}
+
+for index, line in enumerate(lines):
+    line_total_score = 0
+    for word, score in sus_words.items():
+        if word in line.lower():
+            line_total_score += score
+    
+    # decide what to do if the score is too high 
+```
+Run test: `$ python python/score_text.py`
+
 ### Want to help? 
 
 There are currently (12/22/22) 12 sample invoices in text form in `invoices.txt`.
