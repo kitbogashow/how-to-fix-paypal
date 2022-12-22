@@ -7,11 +7,15 @@ These emails come from `service@paypal.com` and therefore look legitimate at fir
 
 For more information regarding these types of scams follow [kitboga](https://youtube.com/kitbogashow) on youtube or twitter.
 
+An example invoice email looks like this:
+![](/assets/email.png)
+
 ## Table of contents:
 
 -   [Helpful links](#helpful-links)
 -   [The regular expressions way](#the-regular-expressions-way)
 -   [The "how suspicious is this text" way](#the-how-suspicious-is-this-text-way)
+-   [The obfuscated way](#the-obfuscated-way)
 -   [Want to help?](#want-to-help)
 
 ## Helpful links:
@@ -44,7 +48,7 @@ sus_words = {
 for index, line in enumerate(lines):
     line_total_score = 0
     for word, score in sus_words.items():
-        if word in line.lower():
+        if word.lower() in line.lower():
             line_total_score += score
 
     # decide what to do if the score is too high
@@ -52,7 +56,17 @@ for index, line in enumerate(lines):
 
 Run test: `$ python python/score_text.py`
 
-### Want to help?
+## The obfuscated way:
+```c
+char l[512];int c(char f[]){int i=0,m=0,c;while(c=tolower(l[i++])){char
+e=tolower(f[m]);if(!e)return 1;else if(c==e){if(f[m+++1]=='\0')return 1
+;}else m=0;}return 0;}int main(){int s=0,t=0;FILE*fh=fopen("../invoice"
+"s.txt","rb");while(fgets(l,512,fh))++t&&(c("suspicious")||c("unauthor"
+"ized")||c("+1")||c("geek squad")||c(" call"))&&s++;printf("%d / %d\n",
+s,t);}
+```
+
+### Want to help? 
 
 There are currently (12/22/22) 12 sample invoices in text form in `invoices.txt`.
 If you have some code that could solve this task, please let me know and I will try to keep this up to date.

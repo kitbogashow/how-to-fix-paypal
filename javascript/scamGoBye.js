@@ -1,0 +1,1 @@
+import("fs").then((fs) => fs.readFileSync("./invoices.txt").toString().trim().split("\n").forEach((l, n) => l.search(/([0-9]{3,}|call|contact|\\+1)/) >= 0 ? console.log(`line ${n} is likely a scam`) : console.log(`line ${n} is likely not a scam`)))
