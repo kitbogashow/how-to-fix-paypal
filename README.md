@@ -6,6 +6,9 @@ These emails come from `service@paypal.com` and therefore look legitimate at fir
 
 For more information regarding these types of scams follow [kitboga](https://youtube.com/kitbogashow) on youtube or twitter.
 
+An example invoice email looks like this:
+![](/assets/email.png)
+
 ## The regular expressions way:
 Credit: @codecat
 ```regex
