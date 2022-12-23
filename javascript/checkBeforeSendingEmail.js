@@ -3,8 +3,8 @@
 // run with `node sendEmail.js`
 
 const nodemailer = require('nodemailer');
+const redText = '\x1b[31m';
 let scamDetected = false;
-let redText = '\x1b[31m';
 
 /**
     With real PayPal (service.paypal.com)  information you would use something more like this.
@@ -17,6 +17,11 @@ let redText = '\x1b[31m';
         refreshToken: process.env.OAUTH_REFRESH_TOKEN
     });
  */
+ 
+ // Fake version of mailer to get it to run without a real email account.
+ const mailer = {
+    sendMail: () => {}
+};
 
 /** With your own email if you want to test sending an email to yourself. 
     let mailer = nodemailer.createTransport({
@@ -40,10 +45,9 @@ if (String(mailOptions.text).toLowerCase().replace(/ /g, '').includes('paypalsup
 
 if (!scamDetected) {
   console.log('Sending email');
-  //   mailer.sendMail(mailOptions, (error, info) => {
-  //     error ? console.log(error) : console.log('Email sent: ' + info.response);
-  //   });
+  mailer.sendMail(mailOptions, (error, info) => {
+       error ? console.log(error) : console.log('Email sent: ' + info.response);
+  });
 } else {
-  console.log('Detected');
   console.log(`${redText}This message may be a scam!!`);
 }
