@@ -38,11 +38,10 @@ Credit: @codecat
 ```regex
 ([0-9]{3,}|call|contact|\+1)
 ```
-
 Run test: `$ python3 python/the_regex_way.py`
 
 ## The "how suspicious is this text" way:
-
+Credit @kitbogashow
 ```
 # various phrases to match against, and their "weight" of how bad they are.
 sus_words = {
@@ -62,7 +61,6 @@ for index, line in enumerate(lines):
 
     # decide what to do if the score is too high
 ```
-
 Run test: `$ python python/score_text.py`
 
 ## The obfuscated way:
@@ -81,9 +79,10 @@ Credit: @Nomnivore
 ```
 import("fs").then((fs) => fs.readFileSync("./invoices.txt").toString().trim().split("\n").forEach((l, n) => l.search(/([0-9]{3,}|call|contact|\\+1)/) >= 0 ? console.log(`line ${n} is likely a scam`) : console.log(`line ${n} is likely not a scam`)))
 ```
+see `javascript/scamGoBye.js`
 
 ## The Java Way:
-Credit: @datatags
+Credit: @Gamer1120 / @datatags
 ```
 private static final Pattern PATTERN = Pattern.compile("[0-9]{3,}|call|contact|\\\\+1");
 public static void main(String[] args) {
@@ -98,6 +97,7 @@ public static void main(String[] args) {
     }
 }
 ```
+see `java/src/main/java/FixPaypalRegex.java`
 
 ## The RUSTy way: 
 Credit: @jasonverbeek
@@ -121,7 +121,51 @@ fn rate_lines() -> Result<()> {
     Ok(())
 }
 ```
+see `rust/sussy-wussy-meter`
 
+## The GO way:
+Credit: @McChronicle
+```
+regex := regexp.MustCompile(`([0-9]{3,}|call|contact|\+1)`)
+for _, message := range messages {
+    if regex.MatchString(message) {
+        matches++
+    }
+}
+```
+see `go/the_regex_way.go`
+
+## The Lua way:
+Credit: @not-optikk
+```
+for word in text:gmatch('%w+') do
+    if flagged_words[word] then
+        sus_score = sus_score + flagged_words[word]
+    elseif word:match('%d+') == word and not whitelisted_numbers[word] then
+        table.insert(numbers, word)
+    end
+end
+```
+see `lua/main.lua`
+
+
+## The Bash way:
+Credit: @emp500
+```
+#!/bin/bash
+
+count=0
+while IFS= read -r line
+do
+  if echo $line | grep -Piq "([0-9]{3,}|call|contact|\+1)"; then
+    echo "sus line found"
+    let count++
+  fi
+done < "../invoices.txt"
+
+echo "sus lines: $count"
+```
+see `bash/run.sh`
 
 ### Want to help? 
 
