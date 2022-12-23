@@ -8,7 +8,7 @@ import re
 # "PayPal will never ask for your password or financial details by email or message, or over the phone.")
 # "Forward suspicious messages to phishing@paypal.com and then delete them.")
 #
-# You won't loose customers doing this and your customers will be safe.
+# You won't lose customers doing this and your customers will be safe.
 
 # Do not include spaces or uppercase characters for easier matching.
 KEYWORDS = { 
@@ -25,7 +25,7 @@ KEYWORDS = {
 }
 
 # Returns list of matches and the suspicious score.
-def analyze_text(text: str) -> list[str] | float:
+def analyze_text(text):
     text = re.sub(r'\s+', '', text).lower() # Remove all spaces, tabs, newlines and make the text lower-case for better easier matching.
 
     sus = []
