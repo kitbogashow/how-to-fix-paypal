@@ -1,0 +1,2 @@
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.20.8

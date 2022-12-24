@@ -1,5 +1,5 @@
 # open the example text file and read each line
-lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
+lines = open('../invoices.txt', 'r', encoding='utf-8').readlines()
 
 """
 a way to map certain keyword or phrases with a "score" of how "bad" they are
@@ -14,7 +14,15 @@ sus_words = {
     'authorized': 0.5,
     '24 hours': 0.25,
     'USD': 0.1,
-    'BTC': 0.1
+    'BTC': 0.1,
+    'Geek Squad': 1,
+    'TREND MICRO': 1,
+    'Norton': 1,
+    'McAfee': 1,
+    'Antivirus': 1,
+    'Microsoft': 1,
+    'department': 1,
+    'support': 1,
 }
 
 for index, line in enumerate(lines):
