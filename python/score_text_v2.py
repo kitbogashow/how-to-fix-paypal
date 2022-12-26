@@ -11,18 +11,22 @@ import re
 # You won't loose customers doing this and your customers will be safe.
 
 # Do not include spaces or uppercase characters for easier matching.
-KEYWORDS = { 
-    re.compile(r"\+([\d\(\)-]+)"): 2, # This is a phone number regex.
-    'cancel': 1,
-    'illegal': 1,
-    'refund': 1,
-    'helpdesk': 1,
-    'bitcoin': 0.5,
-    'authorized': 0.5,
-    '24hours': 0.25,
-    'usd': 0.1, 
-    "btc": 0.1
+KEYWORDS = {
+    r"\+([\d\(\)-]+)": 2,  # This is a phone number regex.
+    r'cancel': 1,
+    r'illegal': 1,
+    r'refund': 1,
+    r'helpdesk': 1,
+    r'bitcoin': 0.5,
+    r'authorized': 0.5,
+    r'24\W?hours ': 0.25,  # Prevents special char to evade regex like 24-hours
+    r'usd': 0.1,
+    r'btc': 0.1
 }
+
+# Compile all regex just once
+KEYWORDS = {re.compile(k): v for k, v in KEYWORDS.items()}
+
 
 # Returns list of matches and the suspicious score.
 def analyze_text(text: str) -> tuple[list[str], float]:
@@ -32,8 +36,6 @@ def analyze_text(text: str) -> tuple[list[str], float]:
     sus = []
     sus_score = 0
     for pattern, score in KEYWORDS.items():
-        if isinstance(pattern, str):
-            pattern = re.compile(re.escape(pattern)) #If it is a string convert it to a regex pattern.
 
         for match in re.findall(pattern, text):
             sus.append(match)
