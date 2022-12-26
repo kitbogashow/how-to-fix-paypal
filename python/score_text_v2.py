@@ -16,7 +16,7 @@ KEYWORDS = {
     r'cancel': 1,
     r'illegal': 1,
     r'refund': 1,
-    r'helpdesk': 1,
+    r'help\W?desk': 1,  # Prevents special char to evade regex like help-desk
     r'bitcoin': 0.5,
     r'authorized': 0.5,
     r'24\W?hours ': 0.25,  # Prevents special char to evade regex like 24-hours
