@@ -43,7 +43,8 @@ def analyze_text(text: str) -> tuple[list[str], float]:
 
     return sus, sus_score
 
-if __name__ == "__main__":  
+
+if __name__ == "__main__":
     for index, text in enumerate(open('invoices.txt', 'r', encoding='utf-8').readlines()):
         print(f"Analyzing email #{index}:")
         matches, score = analyze_text(text)
@@ -53,7 +54,7 @@ if __name__ == "__main__":
         else:
             print("No suspicious keywords found.")
         print()
-    
+
     print("Don't reply, open links, download attachments, or call any listed phone numbers.")
     print("PayPal will never ask for your password or financial details by email or message, or over the phone.")
     print("Forward suspicious messages to phishing@paypal.com and then delete them.")
