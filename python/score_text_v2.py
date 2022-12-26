@@ -25,8 +25,9 @@ KEYWORDS = {
 }
 
 # Returns list of matches and the suspicious score.
-def analyze_text(text: str) -> list[str] | float:
-    text = re.sub(r'\s+', '', text).lower() # Remove all spaces, tabs, newlines and make the text lower-case for better easier matching.
+def analyze_text(text: str) -> tuple[list[str], float]:
+    # Remove all spaces, tabs, newlines and make the text lower-case for better easier matching.
+    text = re.sub(r'\s+', '', text).lower()
 
     sus = []
     sus_score = 0
