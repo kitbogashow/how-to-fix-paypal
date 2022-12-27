@@ -1,5 +1,6 @@
 # open the example text file and read each line
 lines = open('invoices.txt', 'r', encoding='utf-8').readlines()
+scores = 0
 
 """
 a way to map certain keyword or phrases with a "score" of how "bad" they are
@@ -22,6 +23,9 @@ for index, line in enumerate(lines):
     for word, score in sus_words.items():
         if word.lower() in line.lower():
             line_total_score += score
+    scores += line_total_score
 
-    print(f"Line {index+1}: {line_total_score}")
+print("This is the total score: " + str(scores))
 
+if scores > 3:
+    print("AYO WHAT DA H*ll, RED FLAAAAG")
